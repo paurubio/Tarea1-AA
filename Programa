@@ -1,0 +1,138 @@
+#Tarea #1 María Paula Rubio Hernández
+#Algoritmos ordenamiento de https://www.geeksforgeeks.org/
+#Algortimo de generar lista aleatoria https://parzibyte.me/
+
+from time import time
+import random 
+
+def printList(arr):
+    print("La lista ordenada es: ", end="\n")
+    for i in range(len(arr)):
+        print(arr[i], end=" ")
+    print()
+
+
+def generateList(minimo, maximo, longitud):
+	return [random.randint(minimo, maximo) for _ in range(longitud)]
+
+
+
+########################################################   
+def bubbleSort(arr): 
+    n = len(arr) 
+  
+    # Ciclo for que recorre todos los elementos de la lista
+    for i in range(n): 
+        for j in range(0, n-i-1): 
+  
+            # Pasa por la lista 0 a n-i-1 
+            # Intercambia el elemento si es mayor que el siguiente elemento
+
+            if arr[j] > arr[j+1] : 
+                arr[j], arr[j+1] = arr[j+1], arr[j] 
+  
+
+
+
+t0 = time()  
+bubbleSort(generateList(0,15000,50))
+t1 = time()
+
+print("Bubble Sort")
+#printList(arr)
+print("Tiempo: {0:f} segundos".format(t1 - t0))
+
+# Código desarrollado por Shreyanshi Arun
+
+###########################################################
+def mergeSort(arr):
+    if len(arr) > 1:
+ 
+         # Encuentra la mitad de la lista en longitud
+        mid = len(arr)//2
+ 
+        # Divide los elementos de la lista
+        # Desde el inicio hasta la mitad
+        L = arr[:mid]
+ 
+        # Divide los elementos de la lista
+        # De la mitad al final
+        R = arr[mid:]
+ 
+        # Resuelve la primer mitad
+        mergeSort(L)
+ 
+        # Resuelve la segunda mitad
+        mergeSort(R)
+ 
+        i = 0
+        j = 0
+        k = 0
+ 
+        # Copia los datos en una lista temporal
+        while i < len(L) and j < len(R):
+            if L[i] < R[j]:
+                arr[k] = L[i]
+                i += 1
+            else:
+                arr[k] = R[j]
+                j += 1
+            k += 1
+ 
+        # Comprueba si falta algún elemento
+        while i < len(L):
+            arr[k] = L[i]
+            i += 1
+            k += 1
+ 
+        while j < len(R):
+            arr[k] = R[j]
+            j += 1
+            k += 1
+ 
+
+ 
+
+
+
+t0 = time() 
+mergeSort(generateList(0,15000,50))
+t1 = time()
+
+print("MergeSort")
+#printList(arr)
+print("Tiempo: {0:f} segundos".format(t1 - t0))
+    
+ 
+# Código desarrollado por Mayank Khanna
+
+###########################################################
+
+def insertionSort(arr):
+ 
+    # Ciclo for para pasar por los elementos de la lista
+    for i in range(1, len(arr)):
+ 
+        key = arr[i]
+ 
+        # Mueve los elementos de arr[0..i-1) que son de mayor que
+        # que la posición por delante que la actual.
+        j = i-1
+        while j >= 0 and key < arr[j] :
+                arr[j + 1] = arr[j]
+                j -= 1
+        arr[j + 1] = key
+ 
+
+
+
+t0 = time()
+insertionSort(generateList(0,15000,50))
+t1 = time()
+
+print("Insertion Sort")
+#printList(arr)
+print("Tiempo: {0:f} segundos".format(t1 - t0))
+    
+ 
+# Código desarrollado por Mohit Kumra
